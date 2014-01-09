@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProbabilisticImageFiltering", "ProbabilisticImageFiltering\ProbabilisticImageFiltering.csproj", "{FAC639F2-C42D-4B2F-8835-18764DCF5F40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelectionRectangle", "SelectionRectangle\SelectionRectangle.csproj", "{15C1984E-DCC6-4722-9780-0F217A6B506E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.ProbabilisticImageFilteringAndSelectionRectangle", "Demo.ProbabilisticImageFilteringAndSelectionRectangle\Demo.ProbabilisticImageFilteringAndSelectionRectangle.csproj", "{CFD0AFA4-541A-45ED-8B96-B57C3C869B7D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FAC639F2-C42D-4B2F-8835-18764DCF5F40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAC639F2-C42D-4B2F-8835-18764DCF5F40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAC639F2-C42D-4B2F-8835-18764DCF5F40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAC639F2-C42D-4B2F-8835-18764DCF5F40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15C1984E-DCC6-4722-9780-0F217A6B506E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15C1984E-DCC6-4722-9780-0F217A6B506E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15C1984E-DCC6-4722-9780-0F217A6B506E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15C1984E-DCC6-4722-9780-0F217A6B506E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFD0AFA4-541A-45ED-8B96-B57C3C869B7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFD0AFA4-541A-45ED-8B96-B57C3C869B7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFD0AFA4-541A-45ED-8B96-B57C3C869B7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFD0AFA4-541A-45ED-8B96-B57C3C869B7D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
