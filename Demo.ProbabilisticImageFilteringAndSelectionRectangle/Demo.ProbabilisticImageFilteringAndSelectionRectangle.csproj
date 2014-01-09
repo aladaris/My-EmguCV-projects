@@ -100,13 +100,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ProbabilisticImageFiltering\ProbabilisticImageFiltering.csproj">
+    <ProjectReference Include="..\Lib.ProbabilisticImageFiltering\Lib.ProbabilisticImageFiltering.csproj">
       <Project>{fac639f2-c42d-4b2f-8835-18764dcf5f40}</Project>
-      <Name>ProbabilisticImageFiltering</Name>
+      <Name>Lib.ProbabilisticImageFiltering</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SelectionRectangle\SelectionRectangle.csproj">
+    <ProjectReference Include="..\Lib.SelectionRectangle\Lib.SelectionRectangle.csproj">
       <Project>{15c1984e-dcc6-4722-9780-0f217a6b506e}</Project>
-      <Name>SelectionRectangle</Name>
+      <Name>Lib.SelectionRectangle</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
