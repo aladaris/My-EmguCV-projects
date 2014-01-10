@@ -156,7 +156,7 @@ namespace Aladaris
         {
             if (_dist != null && !_filtering)
             {
-                // DOCU: http://stackoverflow.com/questions/363377/how-do-i-run-a-simple-bit-of-code-in-a-new-thread
+                i_img = i_img.Resize(i_img.Width / _reductionFactor, i_img.Height / _reductionFactor, INTER.CV_INTER_LINEAR);
                 Image<Gray, double> result = new Image<Gray, double>(i_img.Size);
                 BackgroundWorker bw = new BackgroundWorker();
                 bw.WorkerReportsProgress = false;
@@ -170,6 +170,7 @@ namespace Aladaris
                 bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(
                     delegate(object o, RunWorkerCompletedEventArgs args)
                     {
+                        result = result.Resize(result.Width * _reductionFactor, result.Height * _reductionFactor, INTER.CV_INTER_LINEAR);
                         OnImageFiltered(result, args);
                         _filtering = false;
                     });
@@ -181,6 +182,7 @@ namespace Aladaris
 
         #endregion
 
+        #region Private Methods
         /// <summary>
         /// Construye una imagen en escala de grises a partir de una imagen de entrada.
         /// Cada pixel de la imagen de entrada es representado en escala de grises en
@@ -190,7 +192,7 @@ namespace Aladaris
         /// <typeparam name="C">Color Space</typeparam>
         /// <param name="i_img">Input image</param>
         /// <returns>GrayScale filtered image.</returns>
-        public Image<Gray, double> GenerateProbabilisticImage<C>(Image<C, byte> i_img)
+        private Image<Gray, double> GenerateProbabilisticImage<C>(Image<C, byte> i_img)
             where C : struct, IColor
         {
             if (_dist != null && i_img.Data != null)
@@ -217,7 +219,7 @@ namespace Aladaris
         /// </summary>
         /// <param name="i_pixel">Pixel a evaluar. Es un array de longitud 3; un valor por canal de color.</param>
         /// <returns>Probabilidad del pixel evaluado.</returns>
-        public double EvaluatePixel(double[] i_pixel)
+        private double EvaluatePixel(double[] i_pixel)
         {
             if (_dist != null)
                 return _dist.ProbabilityDensityFunction(i_pixel);
@@ -225,7 +227,6 @@ namespace Aladaris
                 return 0d;
         }
 
-        #region Private Methods
         /*
          * Ejemplo de construcción de observaciones:
          * 
@@ -325,7 +326,6 @@ namespace Aladaris
             if (RealTimeFiltering)
             {
                 Image<Bgr, byte> img = ((Capture)sender).RetrieveBgrFrame();
-                img = img.Resize(img.Width / _reductionFactor, img.Height / _reductionFactor, INTER.CV_INTER_LINEAR);
                 FilterImage<Bgr>(img);
             }
         }

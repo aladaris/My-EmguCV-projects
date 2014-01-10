@@ -19,12 +19,13 @@ namespace Demo.ProbabilisticImageFilteringAndSelectionRectangle
 {
     public partial class Form1 : Form
     {
+        #region Atributes
         // Atributos
         private Image<Bgr, Byte> _img;
         private SelectionRectangle _selection;
         private ProbabilisticImageFiltering _imFilter;
-        List<Image<Bgr, byte>> _samples; // Lista de Images obtenidas con la multiselección
-        //private SelectionRectangle _rectSel;
+        private List<Image<Bgr, byte>> _samples; // Lista de Images obtenidas con la multiselección
+        #endregion
 
         // Constructor
         public Form1()
@@ -32,6 +33,7 @@ namespace Demo.ProbabilisticImageFilteringAndSelectionRectangle
             InitializeComponent();
             _selection = new SelectionRectangle(imageBox_Main);
             _imFilter = new ProbabilisticImageFiltering();
+            _imFilter.ImageFiltered += OnImageFiltered;
         }
         // LOAD
         private void Form1_Load(object sender, EventArgs e)
@@ -39,6 +41,11 @@ namespace Demo.ProbabilisticImageFilteringAndSelectionRectangle
             _img = new Image<Bgr, byte>("./images/test.jpg");
             _img = _img.Resize(imageBox_Main.Width, imageBox_Main.Height, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
             imageBox_Main.Image = _img;
+        }
+
+        protected virtual void OnImageFiltered(Image<Gray, double> i_img, EventArgs e)
+        {
+            imageBox_output.Image = i_img;
         }
 
         //
@@ -54,17 +61,6 @@ namespace Demo.ProbabilisticImageFilteringAndSelectionRectangle
                 _selection.MouseDown(e.Location);
                 Invalidate();
             }
-            /*
-            else if (e.Button == MouseButtons.Right && _imFilter.NormalDistribution != null)
-            {
-                // Comprobar la probabilidad del pixel pulsado
-                // TODO: ¿Mejor en MouseUp?
-                Bitmap b = imageBox_Main.Image.Bitmap;
-                Color pixel = b.GetPixel(e.X, e.Y);
-                double[] bgr = new double[] {pixel.B, pixel.G, pixel.R};
-                System.Windows.Forms.MessageBox.Show(_imFilter.EvaluatePixel(bgr) + "");
-            }
-            */
         }
         // ImageBox_Main (MOUSEMOVE)
         private void imageBox1_MouseMove(object sender, MouseEventArgs e)
@@ -101,7 +97,7 @@ namespace Demo.ProbabilisticImageFilteringAndSelectionRectangle
                     {
                         imageBox_sample.Image = sample.Resize(imageBox_sample.Width, imageBox_sample.Height, INTER.CV_INTER_LINEAR);
                         _imFilter.SetDistributionValues<Bgr>(sample);
-                        imageBox_output.Image = _imFilter.GenerateProbabilisticImage<Bgr>(_img);
+                        _imFilter.FilterImage<Bgr>(_img);
                         UpdateMeanandMatrixDisplayValues();
                     }
                 }
@@ -115,7 +111,7 @@ namespace Demo.ProbabilisticImageFilteringAndSelectionRectangle
                 _samples = _selection.GetSelectedImagesMulti<Bgr, byte>(_img);
                 _selection.RemoveMulti();
                 _imFilter.SetDistributionValues<Bgr>(_samples);
-                imageBox_output.Image = _imFilter.GenerateProbabilisticImage<Bgr>(_img);
+                _imFilter.FilterImage<Bgr>(_img);
                 // Mostramos la media de los valores BGR como un color
                 if (_imFilter.NormalDistribution != null)
                 {
