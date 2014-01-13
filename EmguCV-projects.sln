@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib.SelectionRectangle", "L
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.ProbabilisticImageFilteringAndSelectionRectangle", "Demo.ProbabilisticImageFilteringAndSelectionRectangle\Demo.ProbabilisticImageFilteringAndSelectionRectangle.csproj", "{CFD0AFA4-541A-45ED-8B96-B57C3C869B7D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Control.CameraSettings", "Control.CameraSettings\Control.CameraSettings.csproj", "{3C277999-D1DE-4AEC-82B4-FF58075A7440}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{CFD0AFA4-541A-45ED-8B96-B57C3C869B7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFD0AFA4-541A-45ED-8B96-B57C3C869B7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFD0AFA4-541A-45ED-8B96-B57C3C869B7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C277999-D1DE-4AEC-82B4-FF58075A7440}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C277999-D1DE-4AEC-82B4-FF58075A7440}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C277999-D1DE-4AEC-82B4-FF58075A7440}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C277999-D1DE-4AEC-82B4-FF58075A7440}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
